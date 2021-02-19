@@ -1,9 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMoon } from '@fortawesome/free-solid-svg-icons';
+import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import '../styles/_app.scss';
 
 function App() {
+
+  const [darkMode, setDarkMode] = useState(false)
+  const [iconToggle, setIconToggle] = useState(faMoon)
+
+  const changeMode = () => {
+    let htmlElement = document.documentElement
+    let darkModeButton = document.getElementById('dark-mode-btn')
+
+    const changeToDarkMode = (element, button) => {
+      element.style.backgroundColor = 'black'
+      element.className = 'dark-mode';
+      button.style.color = '#FFA500'
+      setIconToggle(faSun)
+      setDarkMode(true)
+    }
+
+    const changeToLightMode = (element, button) => {
+      element.className = 'light-mode';
+      element.style.backgroundColor = "#eff0eb"
+      button.style.color = 'black'
+      setIconToggle(faMoon)
+      setDarkMode(false)
+    }
+
+    if (darkMode) {
+      changeToLightMode(htmlElement, darkModeButton)
+    } else {
+      changeToDarkMode(htmlElement, darkModeButton)
+    }
+
+  }
+
   return (
     <div className="app">
       <div className="level">
@@ -12,8 +44,8 @@ function App() {
         </div>
 
         {/* --The button that should toggle dark mode-- */}
-        <button className="app__dark-mode-btn icon level-right">
-          <FontAwesomeIcon icon={faMoon} />
+        <button className="app__dark-mode-btn icon level-right" onClick={changeMode} id="dark-mode-btn">
+          <FontAwesomeIcon icon={iconToggle} />
         </button>
 
       </div>
