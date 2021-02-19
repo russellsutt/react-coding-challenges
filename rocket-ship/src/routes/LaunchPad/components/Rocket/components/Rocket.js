@@ -8,6 +8,7 @@ export function FunctionalRocket() {
 }
 
 export class ClassRocket extends Component {
+  
   constructor() {
     super();
 

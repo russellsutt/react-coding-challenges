@@ -21,7 +21,7 @@ function generateEmptyListEls(quantity) {
 export default function RocketCore({ initialLaunchTime }) {
   return (
     <>
-      <div className="rocket" style={{ bottom: timeToPositionPercent(initialLaunchTime) }}>
+      <div className="rocket">
         <div className="rocket__body">
           <div className="rocket__body__main"/>
           <div className="rocket__body__fin rocket__body__fin__left"/>
